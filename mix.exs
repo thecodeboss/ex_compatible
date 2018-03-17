@@ -28,7 +28,7 @@ defmodule ExCompatible.MixProject do
       # Docs
       name: "ExCompatible",
       docs: [
-        main: "Readme",
+        main: "readme",
         extras: ["README.md"]
       ],
 
