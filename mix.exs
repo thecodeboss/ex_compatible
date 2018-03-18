@@ -7,7 +7,7 @@ defmodule ExCompatible.MixProject do
   versions as possible, while reducing the number of compiler warnings.
   """
 
-  @version "0.1.0"
+  @version "0.1.1"
   @project_url "https://github.com/thecodeboss/ex_compatible"
 
   def project do
