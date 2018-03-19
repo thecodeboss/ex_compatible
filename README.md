@@ -36,7 +36,7 @@ in your `mix.exs` file:
 ```elixir
 defp deps do
   [
-    {:ex_compatible, "~> 0.1"}
+    {:ex_compatible, "~> 0.2"}
   ]
 end
 ```
