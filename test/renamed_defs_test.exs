@@ -18,12 +18,12 @@ defmodule RenamedDefsTest do
 
   test "Float.to_charlist and Float.to_char_list" do
     assert capture_io(:stderr, fn ->
-      {'-2.7', _} = Code.eval_string("""
+      {'-2.7' ++ _, _} = Code.eval_string("""
       import ExCompatible
       safe(Float.to_charlist(-2.7))
       """)
 
-      {'1.99', _} = Code.eval_string("""
+      {'1.99' ++ _, _} = Code.eval_string("""
       import ExCompatible
       safe(Float.to_char_list(1.99))
       """)
