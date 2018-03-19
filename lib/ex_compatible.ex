@@ -11,17 +11,17 @@ defmodule ExCompatible do
 
   ## Examples
 
-      safe(String.to_char_list("Hello"))
+      compatible(String.to_char_list("Hello"))
 
-      safe do
+      compatible do
         String.to_char_list("Hello")
       end
   """
-  defmacro safe(do: quoted) do
-    Macro.postwalk(quoted, &make_safe/1)
+  defmacro compatible(do: quoted) do
+    Macro.postwalk(quoted, &make_compatible/1)
   end
 
-  defmacro safe(quoted) do
-    Macro.postwalk(quoted, &make_safe/1)
+  defmacro compatible(quoted) do
+    Macro.postwalk(quoted, &make_compatible/1)
   end
 end

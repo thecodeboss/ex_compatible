@@ -21,9 +21,9 @@ compiles on Elixir 1.1? You switch to using `String.to_char_list/1` instead,
 but now your compiler spits out annoying warnings on Elixir 1.5. What should
 you do?
 
-ExCompatible can inspect your Elixir version, and by using the `safe` macro, it
-will always inject the most appropriate version of a defition so your compiler
-stays happy.
+ExCompatible can inspect your Elixir version, and by using the `compatible`
+macro, it will always inject the most appropriate version of a defition so your
+compiler stays happy.
 
 **Note:** This project is still under heavy construction. Please check the to-do
 list further down, and we love contributors!
@@ -36,22 +36,22 @@ in your `mix.exs` file:
 ```elixir
 defp deps do
   [
-    {:ex_compatible, "~> 0.1"}
+    {:ex_compatible, "~> 0.2"}
   ]
 end
 ```
 
-Then you will need to import the `safe/1` macro inside any modules in which
-you would like to use it. For example:
+Then you will need to import the `compatible/1` macro inside any modules in
+which you would like to use it. For example:
 
 ```elixir
 defmodule MyModule do
-  import ExCompatible, only: [safe: 1]
+  import ExCompatible, only: [compatible: 1]
 
   def my_def do
-    IO.puts safe(String.to_char_list("Hello world!"))
+    IO.puts compatible(String.to_char_list("Hello world!"))
 
-    safe do
+    compatible do
       Enum.partition([5, 4, 3, 2], fn(x) -> rem(x, 2) == 0 end)
     end
   end
