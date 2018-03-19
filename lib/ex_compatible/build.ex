@@ -22,11 +22,11 @@ defmodule ExCompatible.Build do
         expression = choose_expression(old, new, arities)
 
         quote do
-          def make_safe(unquote(call_expression(old_module, old_def))) do
+          def make_compatible(unquote(call_expression(old_module, old_def))) do
             unquote(expression)
           end
 
-          def make_safe(unquote(call_expression(new_module, new_def))) do
+          def make_compatible(unquote(call_expression(new_module, new_def))) do
             unquote(expression)
           end
         end
@@ -34,10 +34,10 @@ defmodule ExCompatible.Build do
 
     quote do
       @doc false
-      @spec make_safe(Macro.t()) :: Macro.t()
+      @spec make_compatible(Macro.t()) :: Macro.t()
       unquote_splicing(defs)
 
-      def make_safe({call, ctx, args})
+      def make_compatible({call, ctx, args})
           when call in [:to_charlist, :to_char_list] do
         unquote(
           if macro_exported?(Kernel, :to_charlist, 1) do
@@ -48,7 +48,7 @@ defmodule ExCompatible.Build do
         )
       end
 
-      def make_safe(quoted) do
+      def make_compatible(quoted) do
         quoted
       end
     end
